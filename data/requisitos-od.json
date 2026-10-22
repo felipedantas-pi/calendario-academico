@@ -1,0 +1,94 @@
+{
+  "referencia": "Organização Didática do IFPI – RN 143/2022 (CONSUP)",
+  "minimos": { "artigo": "Art. 26", "diasAno": 200, "diasSemestre": 100 },
+  "envioProen": { "artigo": "Art. 29", "diasAntesDoInicio": 90, "analiseDiasUteis": 30 },
+  "infrequencia": { "artigo": "Arts. 47 e 50", "diasLetivos": 15 },
+  "prazosAvaliacao": { "artigo": "Arts. 61, 64, 75 e 78", "diasUteis": 7 },
+
+  "modalidades": {
+    "tecnico_integrado": {
+      "nome": "Técnico integrado ao ensino médio",
+      "artigo": "Art. 30",
+      "itens": [
+        { "n": "I", "texto": "Matrícula dos alunos aprovados no Exame Classificatório", "verifica": { "titulo": "matricula" } },
+        { "n": "II", "texto": "Aulas do Programa de Acolhimento ao Estudante Ingressante (PRAEI)", "verifica": { "titulo": "praei|acolhimento" } },
+        { "n": "III", "texto": "Período de Planejamento Bimestral de Ensino", "verifica": { "titulo": "planejamento|encontro pedagogico" } },
+        { "n": "IV", "texto": "Eleição de representantes de turma", "verifica": { "titulo": "eleicao" } },
+        { "n": "V", "texto": "Datas para realização de provas", "verifica": { "tipos": ["avaliacao"] } },
+        { "n": "VI", "texto": "Datas para provas de segunda chamada", "verifica": { "titulo": "chamada" } },
+        { "n": "VII", "texto": "Datas para recuperação paralela", "verifica": { "titulo": "recuperacao" } },
+        { "n": "VIII", "texto": "Início e fim dos períodos letivos: bimestre e semestre", "verifica": { "especial": "periodos" } },
+        { "n": "IX", "texto": "Início e fim do ano letivo", "verifica": { "especial": "ano" } },
+        { "n": "X", "texto": "Período de férias docentes", "verifica": { "tipos": ["ferias"] } },
+        { "n": "XI", "texto": "Dias letivos", "verifica": { "especial": "automatico" } },
+        { "n": "XII", "texto": "Sábados letivos", "verifica": { "tipos": ["sabado_letivo"] } },
+        { "n": "XIII", "texto": "Dias para reposição de aulas", "verifica": { "tipos": ["sabado_reposicao"] } },
+        { "n": "XIV", "texto": "Dias de feriados", "verifica": { "tipos": ["feriado"] } },
+        { "n": "XV", "texto": "Dias de recesso", "opcional": true, "verifica": { "tipos": ["recesso"] } },
+        { "n": "XVI", "texto": "Dias reservados a comemorações cívicas e sociais", "verifica": { "tipos": ["comemorativo"] } },
+        { "n": "XVII", "texto": "Quantidade de dias letivos prevista para cada mês", "verifica": { "especial": "automatico" } },
+        { "n": "XVIII", "texto": "Prazos de lançamento de notas no Sistema de Gestão Acadêmica, ao final de cada bimestre/semestre", "verifica": { "especial": "prazos_notas" } },
+        { "n": "XIX", "texto": "Reuniões de pais dos estudantes", "verifica": { "titulo": "pais" } },
+        { "n": "XX", "texto": "Datas do Conselho de Classe", "verifica": { "tipos": ["conselho"] } },
+        { "n": "XXI", "texto": "Outros eventos de relevância cultural, científica e institucional", "opcional": true, "verifica": { "especial": "automatico" } },
+        { "n": "Art. 77", "texto": "Datas dos exames finais (Prova Final), previstas no calendário", "verifica": { "tipos": ["prova_final"] } }
+      ]
+    },
+
+    "tecnico_subsequente": {
+      "nome": "Técnico concomitante/subsequente",
+      "artigo": "Art. 31",
+      "itens": [
+        { "n": "I", "texto": "Matrícula dos alunos aprovados no Exame Classificatório", "verifica": { "titulo": "matricula" } },
+        { "n": "II", "texto": "Período de Planejamento Semestral de Ensino", "verifica": { "titulo": "planejamento|encontro pedagogico" } },
+        { "n": "III", "texto": "Matrícula, trancamento, reabertura, reingresso e dispensa de disciplinas", "verifica": { "titulo": "trancamento|reabertura|reingresso|dispensa" } },
+        { "n": "IV", "texto": "Eleição de representantes de turma", "verifica": { "titulo": "eleicao" } },
+        { "n": "V", "texto": "Datas para realização de provas", "verifica": { "tipos": ["avaliacao"] } },
+        { "n": "VI", "texto": "Datas para provas de segunda chamada", "verifica": { "titulo": "chamada" } },
+        { "n": "VII", "texto": "Datas para a Prova Final", "verifica": { "tipos": ["prova_final"] } },
+        { "n": "VIII", "texto": "Datas para recuperação paralela", "verifica": { "titulo": "recuperacao" } },
+        { "n": "IX", "texto": "Início e fim dos períodos letivos: bimestre e semestre", "verifica": { "especial": "periodos" } },
+        { "n": "X", "texto": "Início e fim do ano letivo", "verifica": { "especial": "ano" } },
+        { "n": "XI", "texto": "Período de férias docentes", "verifica": { "tipos": ["ferias"] } },
+        { "n": "XII", "texto": "Dias letivos", "verifica": { "especial": "automatico" } },
+        { "n": "XIII", "texto": "Sábados letivos", "verifica": { "tipos": ["sabado_letivo"] } },
+        { "n": "XIV", "texto": "Dias para reposição de aulas", "verifica": { "tipos": ["sabado_reposicao"] } },
+        { "n": "XV", "texto": "Dias de feriados", "verifica": { "tipos": ["feriado"] } },
+        { "n": "XVI", "texto": "Dias de recesso", "opcional": true, "verifica": { "tipos": ["recesso"] } },
+        { "n": "XVII", "texto": "Dias reservados a comemorações cívicas e sociais", "verifica": { "tipos": ["comemorativo"] } },
+        { "n": "XVIII", "texto": "Quantidade de dias letivos prevista para cada mês", "verifica": { "especial": "automatico" } },
+        { "n": "XIX", "texto": "Prazos de lançamento de notas no Sistema de Gestão Acadêmica", "verifica": { "especial": "prazos_notas" } },
+        { "n": "XX", "texto": "Datas do Conselho de Classe", "verifica": { "tipos": ["conselho"] } },
+        { "n": "XXI", "texto": "Outros eventos de relevância cultural, científica e institucional", "opcional": true, "verifica": { "especial": "automatico" } }
+      ]
+    },
+
+    "graduacao": {
+      "nome": "Graduação",
+      "artigo": "Art. 32",
+      "itens": [
+        { "n": "I", "texto": "Período de Planejamento Semestral de Ensino", "verifica": { "titulo": "planejamento|encontro pedagogico" } },
+        { "n": "II", "texto": "Matrícula, trancamento, reabertura, reingresso e dispensa de disciplinas", "verifica": { "titulo": "matricula|trancamento|reabertura|reingresso|dispensa" } },
+        { "n": "III", "texto": "Datas para realização de provas", "verifica": { "tipos": ["avaliacao"] } },
+        { "n": "IV", "texto": "Datas para provas de segunda chamada", "verifica": { "titulo": "chamada" } },
+        { "n": "V", "texto": "Datas para a Prova Final", "verifica": { "tipos": ["prova_final"] } },
+        { "n": "VI", "texto": "Início e fim dos períodos letivos", "verifica": { "especial": "periodos" } },
+        { "n": "VII", "texto": "Início e fim do ano letivo", "verifica": { "especial": "ano" } },
+        { "n": "VIII", "texto": "Período de férias docentes", "verifica": { "tipos": ["ferias"] } },
+        { "n": "IX", "texto": "Dias letivos", "verifica": { "especial": "automatico" } },
+        { "n": "X", "texto": "Sábados letivos", "verifica": { "tipos": ["sabado_letivo"] } },
+        { "n": "XI", "texto": "Dias para reposição de aulas", "verifica": { "tipos": ["sabado_reposicao"] } },
+        { "n": "XII", "texto": "Dias de feriados", "verifica": { "tipos": ["feriado"] } },
+        { "n": "XIII", "texto": "Dias de recesso", "opcional": true, "verifica": { "tipos": ["recesso"] } },
+        { "n": "XIV", "texto": "Dias reservados a comemorações cívicas e sociais", "verifica": { "tipos": ["comemorativo"] } },
+        { "n": "XV", "texto": "Quantidade de dias letivos prevista para cada mês", "verifica": { "especial": "automatico" } },
+        { "n": "XVI", "texto": "Prazos de lançamento de notas no Sistema de Gestão Acadêmica", "verifica": { "especial": "prazos_notas" } },
+        { "n": "XVIII", "texto": "Data para ambientação dos calouros", "verifica": { "titulo": "ambienta" } },
+        { "n": "XIX", "texto": "Divulgação da relação dos prováveis concludentes", "verifica": { "titulo": "concludente|concluinte" } },
+        { "n": "XX", "texto": "Solicitação de colação de grau pelos prováveis concluintes", "verifica": { "titulo": "colacao" } },
+        { "n": "XXI", "texto": "Validação de PCCS e ATPA", "verifica": { "titulo": "pccs|atpa" } },
+        { "n": "XXII", "texto": "Outros eventos de relevância cultural, científica e institucional", "opcional": true, "verifica": { "especial": "automatico" } }
+      ]
+    }
+  }
+}

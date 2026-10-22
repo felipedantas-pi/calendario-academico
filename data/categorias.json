@@ -1,0 +1,17 @@
+[
+  {"id": "feriado",           "nome": "Feriados",              "cor": "#EE0000", "texto": "#FFFFFF", "estilo": "fundo",    "prioridade": 1,  "efeitoLetivo": "bloqueia", "legenda": true},
+  {"id": "ponto_facultativo", "nome": "Ponto facultativo",     "cor": "#C45911", "texto": "#FFFFFF", "estilo": "fundo",    "prioridade": 2,  "efeitoLetivo": "ponto",    "legenda": true},
+  {"id": "recesso",           "nome": "Recesso escolar",       "cor": "#FFFF00", "texto": "#1F2933", "estilo": "fundo",    "prioridade": 3,  "efeitoLetivo": "bloqueia", "legenda": true},
+  {"id": "ferias",            "nome": "Férias coletivas",      "cor": "#0070C0", "texto": "#FFFFFF", "estilo": "fundo",    "prioridade": 4,  "efeitoLetivo": "bloqueia", "legenda": true},
+  {"id": "prova_final",       "nome": "Prova final",           "cor": "#7030A0", "texto": "#FFFFFF", "estilo": "fundo",    "prioridade": 5,  "efeitoLetivo": "bloqueia", "legenda": true},
+  {"id": "conselho",          "nome": "Conselho de classe",    "cor": "#00B050", "texto": "#FFFFFF", "estilo": "fundo",    "prioridade": 6,  "efeitoLetivo": "nenhum",   "legenda": true},
+  {"id": "jornada",           "nome": "Jornada pedagógica",    "cor": "#B8CCE4", "texto": "#1F2933", "estilo": "fundo",    "prioridade": 7,  "efeitoLetivo": "nenhum",   "legenda": true},
+  {"id": "sabado_reposicao",  "nome": "Sábados de reposição",  "cor": "#FFC000", "texto": "#1F2933", "estilo": "fundo",    "prioridade": 9,  "efeitoLetivo": "reposicao","legenda": true},
+  {"id": "sabado_letivo",     "nome": "Sábados letivos",       "cor": "#F4B083", "texto": "#1F2933", "estilo": "fundo",    "prioridade": 8,  "efeitoLetivo": "adiciona", "legenda": true},
+  {"id": "letivo",            "nome": "Dias letivos",          "cor": "#A8D08D", "texto": "#1F2933", "estilo": "fundo",    "prioridade": 10, "efeitoLetivo": "nenhum",   "legenda": true, "calculada": true},
+
+  {"id": "avaliacao",         "nome": "Avaliações e recuperação", "cor": "#2F5597", "texto": "#FFFFFF", "estilo": "negrito",  "prioridade": 20, "efeitoLetivo": "nenhum", "legenda": false},
+  {"id": "marco",             "nome": "Marcos do calendário",     "cor": "#1B6E3A", "texto": "#FFFFFF", "estilo": "contorno", "prioridade": 21, "efeitoLetivo": "nenhum", "legenda": false},
+  {"id": "administrativo",    "nome": "Atividades administrativas", "cor": "#6B7280", "texto": "#FFFFFF", "estilo": "marcador", "prioridade": 22, "efeitoLetivo": "nenhum", "legenda": false},
+  {"id": "comemorativo",      "nome": "Datas e semanas temáticas",  "cor": "#8E6BBF", "texto": "#FFFFFF", "estilo": "marcador", "prioridade": 23, "efeitoLetivo": "nenhum", "legenda": false}
+]

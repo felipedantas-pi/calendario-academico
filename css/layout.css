@@ -1,0 +1,109 @@
+/* ==========================================================================
+   layout.css – estrutura da página: topo, indicadores, abas, conteúdo, rodapé, menus.
+   Mobile-first: o que está fora de @media vale para telas pequenas.
+   ========================================================================== */
+
+.app { max-width: var(--larg-max); margin: 0 auto; padding: 1rem 1rem 3rem; }
+
+/* ---------- topo ---------- */
+.topo {
+  display: flex; flex-direction: column; gap: 1rem;
+  padding: 1rem; margin-bottom: 1rem;
+  background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio); box-shadow: var(--sombra);
+}
+.marca { display: flex; align-items: center; gap: 1rem; min-width: 0; }
+.marca__logo { flex: none; width: auto; height: 2.75rem; }
+:root[data-tema="escuro"] .marca__logo { background: #fff; border-radius: 8px; padding: 0.2rem 0.5rem; }
+@media (prefers-color-scheme: dark) { :root:not([data-tema="claro"]) .marca__logo { background: #fff; border-radius: 8px; padding: 0.2rem 0.5rem; } }
+.marca__inst { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--texto-suave); }
+.marca__titulo { font-size: 1.2rem; line-height: 1.25; }
+.marca__sub { font-size: 0.85rem; color: var(--texto-suave); }
+
+.acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+
+@media (min-width: 60rem) {
+  .topo { flex-direction: row; align-items: center; justify-content: space-between; }
+  .marca__titulo { font-size: 1.4rem; }
+}
+
+/* ---------- menus (details/summary) ---------- */
+.menu { position: relative; }
+.menu > summary { list-style: none; cursor: pointer; }
+.menu > summary::-webkit-details-marker { display: none; }
+.menu__lista {
+  position: absolute; right: 0; top: calc(100% + 0.35rem); z-index: 30;
+  min-width: 16rem; padding: 0.35rem;
+  background: var(--superficie); border: 1px solid var(--borda-forte); border-radius: var(--raio-sm); box-shadow: var(--sombra-forte);
+}
+.menu__item {
+  display: flex; flex-direction: column; align-items: flex-start; width: 100%;
+  padding: 0.55rem 0.7rem; border: 0; border-radius: 6px; background: transparent; text-align: left; cursor: pointer;
+}
+.menu__item:hover { background: var(--superficie-2); }
+.menu__item small { color: var(--texto-suave); font-size: 0.75rem; }
+.menu__item--perigo { color: var(--perigo); }
+.menu__grupo { margin: 0.25rem 0; padding: 0.35rem 0.35rem 0; border-top: 1px solid var(--borda); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--texto-suave); }
+.menu__grupo .menu__item { text-transform: none; letter-spacing: 0; color: var(--texto); font-size: 1rem; }
+@media (max-width: 40rem) { .menu__lista { right: auto; left: 0; } }
+
+/* ---------- indicadores ---------- */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
+.kpi {
+  display: flex; flex-direction: column; gap: 0.1rem; align-items: flex-start;
+  padding: 0.75rem 1rem; text-align: left;
+  background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio); box-shadow: var(--sombra);
+}
+button.kpi { cursor: pointer; font: inherit; }
+button.kpi:hover { border-color: var(--texto-suave); }
+.kpi__rotulo { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--texto-suave); font-weight: 600; }
+.kpi__valor { font-size: 1.5rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.kpi__nota { font-size: 0.75rem; color: var(--texto-suave); }
+.kpi--alerta { border-color: var(--aviso); background: var(--aviso-suave); }
+.kpi--alerta .kpi__nota { color: var(--aviso); font-weight: 600; }
+.kpi--pendencias { border-color: var(--aviso); }
+.kpi--pendencias .kpi__valor { color: var(--aviso); }
+.kpi--ok .kpi__valor { color: var(--primaria); }
+
+/* celular: indicadores viram uma faixa rolável na horizontal, para o calendário aparecer mais cedo */
+@media (max-width: 40rem) {
+  .kpis { display: flex; overflow-x: auto; scroll-snap-type: x proximity; margin: 0 -1rem 1rem; padding: 0.1rem 1rem 0.5rem; scrollbar-width: thin; }
+  .kpi { flex: 0 0 9.5rem; scroll-snap-align: start; }
+  .kpi__valor { font-size: 1.3rem; }
+  .topo { padding: 0.8rem; }
+  .marca__logo { height: 2.25rem; }
+  .marca__inst { display: none; }
+}
+
+/* ---------- abas ---------- */
+.abas {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; gap: 0.25rem; overflow-x: auto; scrollbar-width: none;
+  margin: 0 -1rem 1rem; padding: 0.5rem 1rem;
+  background: color-mix(in srgb, var(--fundo) 88%, transparent); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--borda);
+}
+.abas::-webkit-scrollbar { display: none; }
+.aba {
+  flex: none; display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.55rem 1rem; border: 0; border-radius: 999px; background: transparent;
+  font-weight: 600; color: var(--texto-suave); cursor: pointer; white-space: nowrap;
+}
+.aba:hover { background: var(--superficie); color: var(--texto); }
+.aba--ativa { background: var(--primaria); color: var(--primaria-texto); }
+.aba--ativa:hover { background: var(--primaria-hover); color: var(--primaria-texto); }
+.aba__selo { min-width: 1.4rem; padding: 0 0.4rem; border-radius: 999px; background: var(--aviso); color: #fff; font-size: 0.72rem; text-align: center; }
+
+@media (min-width: 60rem) { .abas { margin: 0 0 1rem; border-radius: 999px; border: 1px solid var(--borda); } }
+
+/* ---------- conteúdo e rodapé ---------- */
+.conteudo { outline: none; }
+.visao { display: flex; flex-direction: column; gap: 1rem; }
+
+.rodape {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.5rem;
+  margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--borda);
+  font-size: 0.8rem; color: var(--texto-suave);
+}
+
+.erro-carga { padding: 2rem; max-width: 40rem; margin: 3rem auto; display: flex; flex-direction: column; gap: 1rem; }
+.erro-carga h1 { font-size: 1.3rem; color: var(--perigo); }

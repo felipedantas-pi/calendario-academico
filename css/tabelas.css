@@ -1,0 +1,141 @@
+/* ==========================================================================
+   tabelas.css – telas Eventos, Resumo, Datas importantes e Pendências.
+   ========================================================================== */
+
+/* ---------- barra de filtros (Eventos e Datas) ---------- */
+.barra-filtros { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; padding: 0.75rem 1rem; }
+.barra-filtros .campo { flex: 1 1 11rem; width: auto; }
+.barra-filtros .btn--primario { margin-left: auto; }
+.ev-contador { font-size: 0.82rem; color: var(--texto-suave); }
+
+/* ---------- tabela de eventos ---------- */
+.card--tabela { overflow: hidden; }
+.tabela-eventos { width: 100%; border-collapse: collapse; }
+.ev-mes th {
+  padding: 0.55rem 1rem; text-align: left;
+  background: var(--superficie-2); border-top: 1px solid var(--borda); border-bottom: 1px solid var(--borda);
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--texto-suave);
+}
+.ev-grupo:first-of-type .ev-mes th { border-top: 0; }
+.ev-mes__qtd { margin-left: 0.5rem; padding: 0 0.5rem; border-radius: 999px; background: var(--borda); color: var(--texto); font-size: 0.72rem; }
+
+.ev-linha { cursor: pointer; border-bottom: 1px solid var(--borda); }
+.ev-linha:last-child { border-bottom: 0; }
+.ev-linha:hover, .ev-linha:focus-visible { background: var(--superficie-2); }
+.ev-linha td { padding: 0.6rem 0.75rem; vertical-align: top; }
+.ev-dia { width: 8.5rem; border-left: 4px solid var(--cor); padding-left: 1rem !important; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ev-dia__sem { margin-left: 0.4rem; font-size: 0.72rem; color: var(--texto-suave); }
+.ev-titulo { width: 100%; }
+.ev-titulo__texto { display: block; font-weight: 600; }
+.ev-titulo__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin-top: 0.25rem; }
+.ev-titulo__obs { font-size: 0.8rem; color: var(--texto-suave); }
+.ev-acoes { white-space: nowrap; text-align: right; }
+.ev-acoes .btn--icone { width: 2rem; min-height: 2rem; font-size: 0.9rem; opacity: 0.7; }
+.ev-linha:hover .btn--icone, .ev-linha:focus-within .btn--icone { opacity: 1; }
+
+@media (max-width: 40rem) {
+  .tabela-eventos, .tabela-eventos tbody, .tabela-eventos tr, .tabela-eventos td, .tabela-eventos th { display: block; }
+  .ev-linha { position: relative; padding: 0.6rem 1rem 0.6rem 1rem; border-left: 4px solid var(--cor); }
+  .ev-linha td { padding: 0 !important; }
+  .ev-dia { width: auto; border-left: 0; font-size: 0.85rem; color: var(--texto-suave); }
+  .ev-acoes { position: absolute; top: 0.4rem; right: 0.4rem; }
+  .ev-mes th { display: block; }
+}
+
+/* ---------- quadros do Resumo ---------- */
+.quadro { padding: 1rem 1.25rem 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+.quadro__topo { display: flex; flex-direction: column; gap: 0.2rem; }
+.quadro__titulo { font-size: 1.05rem; display: flex; align-items: center; gap: 0.5rem; }
+.quadro__nota, .quadro__regra { font-size: 0.82rem; color: var(--texto-suave); }
+.quadro__sem, .quadro__fds { font-size: 0.72rem; color: var(--texto-suave); margin-left: 0.3rem; }
+.quadros-grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: 1rem; }
+
+.tabela-simples { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.tabela-simples th, .tabela-simples td { padding: 0.5rem 0.5rem; text-align: left; border-bottom: 1px solid var(--borda); vertical-align: top; }
+.tabela-simples thead th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--texto-suave); }
+.tabela-simples th.num, .tabela-simples td.num { text-align: right; }
+.tabela-simples tfoot th, .tabela-simples tfoot td { border-bottom: 0; font-weight: 700; }
+.tabela-simples tbody tr:last-child td, .tabela-simples tbody tr:last-child th { border-bottom: 0; }
+
+/* gráfico de barras: dias letivos por mês */
+.barras { list-style: none; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0.4rem; }
+.barra { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; min-width: 0; }
+.barra__valor { font-weight: 700; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.barra__trilho { position: relative; display: flex; align-items: flex-end; width: 100%; height: 7.5rem; background: var(--superficie-2); border-radius: 6px; }
+.barra__preenchido { width: 100%; background: #a8d08d; border-radius: 6px 6px 0 0; min-height: 2px; }
+.barra--diverge .barra__preenchido { background: var(--aviso); }
+.barra__informado { position: absolute; left: -2px; right: -2px; height: 2px; background: var(--texto); }
+.barra__mes { font-size: 0.7rem; font-weight: 600; color: var(--texto-suave); }
+.barra__doc { font-size: 0.65rem; color: var(--texto-suave); white-space: nowrap; }
+.barra--diverge .barra__doc { color: var(--aviso); font-weight: 700; }
+
+.totais { display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; }
+.total { display: flex; flex-direction: column; }
+.total__rotulo { font-size: 0.75rem; color: var(--texto-suave); text-transform: uppercase; letter-spacing: 0.04em; }
+.total__valor { font-size: 1.6rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.total__doc { font-size: 0.78rem; color: var(--texto-suave); }
+.total__doc--diverge { color: var(--aviso); font-weight: 700; }
+
+/* ---------- datas importantes ---------- */
+.form-inline { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; padding: 0.75rem 1rem; }
+.form-inline .campo { width: auto; }
+.datas-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); gap: 1rem; align-items: start; }
+.datas-mes { padding: 1rem 1.25rem; }
+.datas-mes__nome { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primaria); margin-bottom: 0.5rem; }
+.datas-lista { list-style: none; display: flex; flex-direction: column; }
+.datas-lista li { display: flex; align-items: center; gap: 0.75rem; padding: 0.3rem 0; border-bottom: 1px solid var(--borda); font-size: 0.92rem; }
+.datas-lista li:last-child { border-bottom: 0; }
+.datas-lista li > span { flex: 1; }
+.datas-lista__dia { flex: none; width: 1.8rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--texto-suave); }
+.datas-lista .btn--icone { width: 1.7rem; min-height: 1.7rem; font-size: 0.75rem; opacity: 0; }
+.datas-lista li:hover .btn--icone, .datas-lista li:focus-within .btn--icone { opacity: 1; }
+@media (hover: none) { .datas-lista .btn--icone { opacity: 0.6; } }
+
+/* ---------- pendências ---------- */
+.pendencias { list-style: none; display: flex; flex-direction: column; }
+.pendencia {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem;
+  padding: 0.7rem 0.75rem 0.7rem 1rem; border-bottom: 1px solid var(--borda); border-left: 4px solid var(--info);
+}
+.pendencia:last-child { border-bottom: 0; }
+.pendencia--erro { border-left-color: var(--perigo); }
+.pendencia--aviso { border-left-color: var(--aviso); }
+.pendencia__texto { flex: 1 1 22rem; display: flex; flex-direction: column; gap: 0.1rem; }
+.pendencia__texto span { font-size: 0.88rem; color: var(--texto-suave); }
+.pendencias + .pendencias { margin-top: 0; }
+.visao--pendencias .card > .quadro__topo { padding: 1rem 1.25rem 0.5rem; }
+
+/* ---------- conformidade (Organização Didática) ---------- */
+.eq-semestre { display: flex; flex-direction: column; gap: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--borda); }
+.eq-semestre:first-of-type { border-top: 0; padding-top: 0; }
+.eq-semestre__titulo { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.6rem; font-size: 1rem; }
+.eq-tabela td, .eq-tabela th { vertical-align: middle; }
+.eq-linha--falta { background: color-mix(in srgb, var(--aviso-suave) 55%, transparent); }
+.eq-linha--sobra { background: color-mix(in srgb, var(--info-suave) 55%, transparent); }
+.eq-selo { display: inline-block; padding: 0.1em 0.65em; border-radius: 999px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+.eq-selo--ok { background: var(--primaria-suave); color: var(--primaria); }
+.eq-selo--falta { background: var(--aviso-suave); color: var(--aviso); }
+.eq-selo--sobra { background: var(--info-suave); color: var(--info); }
+.eq-aviso { padding: 0.5rem 0.75rem; border-radius: var(--raio-sm); text-transform: none; font-size: 0.85rem; letter-spacing: 0; }
+.perdidos summary { cursor: pointer; font-size: 0.82rem; color: var(--texto-suave); }
+.perdidos ul { list-style: none; margin-top: 0.3rem; font-size: 0.8rem; color: var(--texto-suave); display: flex; flex-direction: column; gap: 0.15rem; }
+
+.sugestoes { padding: 0.75rem 1rem; border-radius: var(--raio-sm); background: var(--superficie-2); border: 1px dashed var(--borda-forte); }
+.sugestoes h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--texto-suave); margin-bottom: 0.4rem; }
+.sugestoes ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.sugestoes li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; font-size: 0.9rem; }
+.sugestao--aviso { color: var(--aviso); }
+
+.requisitos { list-style: none; display: flex; flex-direction: column; }
+.req { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0.25rem; border-bottom: 1px solid var(--borda); }
+.req:last-child { border-bottom: 0; }
+.req > div { flex: 1; display: flex; flex-direction: column; font-size: 0.92rem; }
+.req small { color: var(--aviso); }
+.req--opcional small { color: var(--texto-suave); }
+.req__marca { flex: none; width: 1.5rem; height: 1.5rem; display: grid; place-items: center; border-radius: 50%; font-size: 0.8rem; font-weight: 800; }
+.req--ok .req__marca { background: var(--primaria-suave); color: var(--primaria); }
+.req--falta .req__marca { background: var(--perigo-suave); color: var(--perigo); }
+.req--opcional .req__marca { background: var(--superficie-2); color: var(--texto-suave); }
+
+.prazo__det { display: block; color: var(--texto-suave); font-size: 0.8rem; margin-top: 0.1rem; }
+.prazo--passou { opacity: 0.6; }

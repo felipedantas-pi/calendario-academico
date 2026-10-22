@@ -1,0 +1,5 @@
+# Evita diferenças de fim de linha (CRLF/LF) entre Windows e outros sistemas
+* text=auto eol=lf
+*.bat text eol=crlf
+*.png binary
+*.pdf binary

@@ -1,0 +1,50 @@
+name: Testes e publicação no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # testes unitários do núcleo (js/core) e validação do calendário publicado:
+      # só ERROS quebram o build; avisos ("em elaboração") são apenas listados.
+      - run: npm test
+      - run: npm run validar
+
+  publicar:
+    if: github.ref == 'refs/heads/main'
+    needs: testes
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      # publica somente os arquivos do site (sem tests/, docs/, scripts/)
+      - name: Montar pasta do site
+        run: |
+          mkdir _site
+          cp -r index.html css js data assets .nojekyll _site/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deploy
+        uses: actions/deploy-pages@v4

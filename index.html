@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calendário Acadêmico</title>
+  <meta name="description" content="Protótipo web do calendário acadêmico do campus: calendário anual colorido, eventos, dias letivos calculados e validação de inconsistências.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Estilos em arquivos separados, na ordem: tokens → base → layout → componentes → impressão -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/calendario.css">
+  <link rel="stylesheet" href="css/tabelas.css">
+  <link rel="stylesheet" href="css/dialogos.css">
+  <link rel="stylesheet" href="css/impressao.css" media="all">
+</head>
+<body>
+  <a class="pular-link" href="#conteudo">Ir para o conteúdo</a>
+
+  <!-- Toda a interface é desenhada por js/main.js dentro deste elemento -->
+  <div id="app" class="app">
+    <p class="carregando">Carregando calendário…</p>
+  </div>
+
+  <noscript>
+    <p class="aviso-noscript">Este calendário precisa de JavaScript para funcionar.</p>
+  </noscript>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

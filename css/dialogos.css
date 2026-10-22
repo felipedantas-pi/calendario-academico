@@ -1,0 +1,100 @@
+/* ==========================================================================
+   dialogos.css – janelas modais (<dialog>), formulários e avisos (toast).
+   ========================================================================== */
+
+.dialogo {
+  width: min(100% - 1.5rem, 40rem); max-height: calc(100dvh - 1.5rem);
+  padding: 0; border: 1px solid var(--borda-forte); border-radius: 18px;
+  background: var(--superficie); color: var(--texto); box-shadow: var(--sombra-forte);
+}
+.dialogo--sm { width: min(100% - 1.5rem, 26rem); }
+.dialogo--lg { width: min(100% - 1.5rem, 54rem); }
+.dialogo::backdrop { background: rgb(8 16 11 / 0.55); backdrop-filter: blur(2px); }
+.dialogo[open] { animation: dialogo-entra 0.18s ease-out; }
+@keyframes dialogo-entra { from { opacity: 0; transform: translateY(8px) scale(0.98); } }
+
+.dialogo__form { display: flex; flex-direction: column; max-height: calc(100dvh - 1.5rem); }
+.dialogo__topo { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 1.1rem 1.25rem 0.9rem; border-bottom: 1px solid var(--borda); }
+.dialogo__titulo { font-size: 1.15rem; line-height: 1.3; }
+.dialogo__titulo::first-letter { text-transform: uppercase; }
+.dialogo__subtitulo { margin-top: 0.15rem; font-size: 0.85rem; color: var(--texto-suave); }
+.dialogo__corpo { padding: 1.1rem 1.25rem; overflow-y: auto; }
+.dialogo__texto { line-height: 1.6; }
+.dialogo__rodape { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; padding: 0.9rem 1.25rem; border-top: 1px solid var(--borda); background: var(--superficie-2); border-radius: 0 0 18px 18px; }
+.dialogo__rodape .btn--perigo { margin-right: auto; }
+
+/* ---------- formulários ---------- */
+.form-grade { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.rotulo--cheio { grid-column: 1 / -1; }
+@media (max-width: 36rem) { .form-grade { grid-template-columns: 1fr; } }
+
+.periodos { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.35rem; }
+.periodo { display: grid; grid-template-columns: 1fr 1fr auto; gap: 0.5rem; align-items: end; }
+.periodo__campo { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.75rem; font-weight: 500; color: var(--texto-suave); }
+
+.avancado { border: 1px solid var(--borda); border-radius: var(--raio-sm); padding: 0.6rem 0.85rem; }
+.avancado summary { cursor: pointer; font-weight: 600; font-size: 0.9rem; }
+.avancado[open] { display: grid; gap: 0.85rem; }
+
+/* configurações */
+.config { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.config__grupo { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; margin: 0; padding: 0.9rem 1rem 1rem; border: 1px solid var(--borda); border-radius: var(--raio-sm); }
+.config__grupo legend { padding: 0 0.4rem; font-weight: 700; font-size: 0.9rem; }
+.config__grupo--cheio { grid-column: 1 / -1; }
+.linhas { display: flex; flex-direction: column; gap: 0.4rem; }
+.linha-config { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 0.4rem; align-items: center; }
+.linha-config--bim { grid-template-columns: 4.5rem 1fr 1fr 1fr auto; }
+.linha-config--cab { font-size: 0.72rem; font-weight: 600; color: var(--texto-suave); text-transform: uppercase; letter-spacing: 0.04em; }
+.linha-config:not(.linha-config--cab):has([data-campo="n"]) { grid-template-columns: 4.5rem 1fr 1fr 1fr auto; }
+.linha-config .btn--icone { width: 2rem; min-height: 2rem; }
+@media (max-width: 40rem) {
+  .config { grid-template-columns: 1fr; }
+  .linha-config, .linha-config--bim, .linha-config:not(.linha-config--cab):has([data-campo="n"]) { grid-template-columns: 1fr 1fr; }
+  .linha-config--cab { display: none; }
+}
+
+/* detalhes do dia */
+.dia-eventos { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.dia-evento { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.6rem 0.8rem; border: 1px solid var(--borda); border-left: 5px solid var(--cor, var(--borda-forte)); border-radius: var(--raio-sm); }
+.dia-evento__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; margin-top: 0.25rem; font-size: 0.8rem; color: var(--texto-suave); }
+.dia-comem { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px dashed var(--borda); }
+.dia-comem h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--texto-suave); margin-bottom: 0.4rem; }
+.dia-comem ul { padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.2rem; }
+
+/* ---------- toasts ---------- */
+.toasts { position: fixed; z-index: 200; left: 50%; bottom: 1rem; transform: translateX(-50%); display: flex; flex-direction: column; gap: 0.5rem; width: min(100% - 2rem, 28rem); pointer-events: none; }
+.toast {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; pointer-events: auto;
+  padding: 0.75rem 1rem; border-radius: var(--raio-sm); background: #17211b; color: #f2f6f3; box-shadow: var(--sombra-forte); font-size: 0.9rem;
+  animation: dialogo-entra 0.2s ease-out;
+}
+.toast--erro { background: #7d1722; white-space: pre-line; }
+.toast__acao { border: 0; background: transparent; color: #8fe3a5; font-weight: 700; cursor: pointer; padding: 0.2rem 0.4rem; }
+
+/* botões "+ Adicionar" dentro de formulários não devem ocupar a linha toda */
+.rotulo > .btn, .config__grupo > .btn { align-self: flex-start; }
+
+/* sábado letivo: quantos dias de cada dia da semana ele repõe */
+.compensa { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.5rem; }
+.compensa__dia { display: flex; flex-direction: column; gap: 0.2rem; text-align: center; font-size: 0.75rem; font-weight: 600; color: var(--texto-suave); text-transform: capitalize; }
+.compensa__dia .campo { text-align: center; padding: 0.3rem; }
+.compensa__dica { color: var(--aviso) !important; font-weight: 600 !important; }
+
+/* categorias e cores */
+.cats { display: flex; flex-direction: column; gap: 0.5rem; }
+.cat-linha { display: grid; grid-template-columns: 3rem minmax(10rem, 1.4fr) minmax(8rem, 1fr) minmax(8rem, 1fr) 4.5rem 2.5rem auto; gap: 0.5rem; align-items: center; }
+.cat-linha--cab { font-size: 0.72rem; font-weight: 600; color: var(--texto-suave); text-transform: uppercase; letter-spacing: 0.04em; }
+.cat__cor { width: 3rem; height: 2.4rem; padding: 0.15rem; border: 1px solid var(--borda-forte); border-radius: var(--raio-sm); background: var(--superficie); cursor: pointer; }
+.cat__nome { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+.cat__previa { display: block; }
+.cat__uso { text-align: center; color: var(--texto-suave); font-variant-numeric: tabular-nums; }
+.cat-linha select.campo { font-size: 0.8rem; padding: 0.3rem; }
+.cat-linha input[type=number] { text-align: center; padding: 0.3rem; }
+.cats__rodape { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; margin-top: 0.5rem; }
+.cats__rodape small { color: var(--texto-suave); }
+@media (max-width: 52rem) {
+  .cat-linha { grid-template-columns: 3rem 1fr auto; }
+  .cat-linha--cab { display: none; }
+  .cat-linha > .campo, .cat-linha > select { grid-column: 1 / -1; }
+  .cat__uso { display: none; }
+}

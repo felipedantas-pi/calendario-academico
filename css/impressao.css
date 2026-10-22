@@ -1,0 +1,59 @@
+/* ==========================================================================
+   impressao.css – layout A4 para imprimir ou salvar em PDF.
+   Durante a impressão o JS troca a tela pela "visão de impressão"
+   (calendário → eventos → resumo → datas importantes), ver js/ui/visao-impressao.js.
+   ========================================================================== */
+
+/* fora da impressão a visão especial não tem decoração extra */
+.impressao__secao > h2 { margin: 0 0 0.5rem; }
+
+@media print {
+  @page { size: A4 portrait; margin: 9mm; }
+
+  html, body { background: #fff !important; color: #000 !important; font-size: 10pt; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; box-shadow: none !important; backdrop-filter: none !important; }
+
+  /* controles não fazem sentido no papel */
+  .acoes, .abas, .kpis-host, .rodape, .pular-link, .toasts, dialog, .dica,
+  .legenda__lista--extra, .ev-acoes, .alerta { display: none !important; }
+
+  .app { max-width: none; padding: 0; }
+  .topo { border: 0; padding: 0 0 4mm; margin: 0; border-bottom: 1.5px solid #000; border-radius: 0; background: none; }
+  .marca__logo { height: 14mm; background: none !important; padding: 0 !important; }
+  .marca__titulo { font-size: 14pt; }
+
+  .card { border: 1px solid #999; border-radius: 4px; background: #fff; }
+  .visao { gap: 4mm; }
+
+  /* calendário: 3 meses por linha, como no documento original */
+  .legenda { padding: 2mm 3mm; }
+  .legenda__item { padding: 0 2mm 0 1mm; font-size: 8pt; border: 0; background: none; }
+  .meses { grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+  .mes { padding: 2mm; break-inside: avoid; }
+  .mes__nome { font-size: 10pt; }
+  .dia { aspect-ratio: 1.45; font-size: 8pt; border-radius: 2px; transition: none; transform: none !important; }
+  .mes__dias, .mes__semana { gap: 1.5px; }
+  .mes__topo { margin-bottom: 1mm; }
+  .dia--esmaecido { opacity: 1; }
+
+  /* seções seguintes começam em página nova */
+  .impressao__quebra { break-before: page; }
+  .impressao__secao > h2 { font-size: 13pt; border-bottom: 1px solid #000; padding-bottom: 1mm; }
+
+  .tabela-eventos { font-size: 8.5pt; }
+  .ev-linha { break-inside: avoid; }
+  .ev-linha td { padding: 1mm 2mm; }
+  .ev-mes { break-after: avoid; }
+  .ev-titulo__texto { display: inline; font-weight: 600; }
+  .ev-titulo__meta { display: inline-flex; margin: 0 0 0 1.5mm; vertical-align: middle; }
+  .selo { border: 1px solid rgb(0 0 0 / 0.25); }
+
+  .quadro { padding: 3mm; break-inside: avoid; }
+  .quadros-grade { grid-template-columns: 1fr 1fr; }
+  .barra__trilho { height: 25mm; }
+
+  .impressao__datas { columns: 3; column-gap: 6mm; font-size: 8pt; }
+  .impressao__datas section { break-inside: avoid; margin-bottom: 3mm; }
+  .impressao__datas h3 { margin: 0 0 1mm; font-size: 9pt; text-transform: uppercase; }
+  .impressao__datas ul { list-style: none; }
+}
